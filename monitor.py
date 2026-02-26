@@ -1,6 +1,7 @@
 import requests
 import time
 import smtplib
+import os
 from email.mime.text import MIMEText
 from email.utils import formataddr
 
@@ -12,7 +13,7 @@ CHECK_INTERVAL = 60  # 每60秒检查一次
 
 # ===== QQ邮箱配置 =====
 EMAIL_SENDER = "2215574168@qq.com"
-EMAIL_PASSWORD = "qdvrwtbwjxbfdiid"
+EMAIL_PASSWORD = os.environ["QQ_PASSWORD"]
 EMAIL_RECEIVER = "2215574168@qq.com"
 
 headers = {
@@ -54,5 +55,6 @@ while True:
 
     except Exception as e:
         print("发生错误:", e)
+
 
     time.sleep(CHECK_INTERVAL)
