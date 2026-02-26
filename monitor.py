@@ -30,12 +30,11 @@ print("开始检查库存...")
 response = requests.get(URL, headers=headers)
 html = response.text
 
-if "SOLD_OUT" in html:
-    print("当前仍为 SOLD_OUT")
+print("开始检查库存...")
 
-elif '"status":"SALE"' in html:
-    print("检测到补货，发送邮件")
-    send_email()
+response = requests.get(URL, headers=headers)
+html = response.text
 
-else:
-    print("未找到状态字段")
+print("测试：强制发送邮件")
+send_email()
+
